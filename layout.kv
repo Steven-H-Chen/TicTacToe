@@ -1,31 +1,75 @@
 <Layoutsx>:
+
+    size_hint: .5, .5
+    pos_hint: {"center_x": .5, "center_y": .7}
     cols: 3
     rows: 3
 
     Button:
-        text: '1'
-    
+        id: btn
+        text: ""
+        font_size: "45sp"
+        on_release: app.presser(btn)
+                                
     Button:
-        text: '2'
-    
+        id: btn
+        text: ""
+        font_size: "45sp"
+        on_release: app.presser(btn)
+
     Button:
-        text: '3'
-    
+        id: btn
+        text: ""
+        font_size: "45sp"
+        on_release: app.presser(btn)
+
     Button:
-        text: '4'
-    
+        id: btn
+        text: ""
+        font_size: "45sp"
+        on_release: app.presser(btn)
+
     Button:
-        text: '5'
-    
+        id: btn
+        text: ""
+        font_size: "45sp"
+        on_release: app.presser(btn)
+
     Button:
-        text: '6'
-    
+        id: btn
+        text: ""
+        font_size: "45sp"
+        on_release: app.presser(btn)
+
     Button:
-        text: '7'
-    
+        id: btn
+        text: ""
+        font_size: "45sp"
+        on_release: app.presser(btn)
+
     Button:
-        text: '8'
-    
+        id: btn
+        text: ""
+        font_size: "45sp"
+        on_release: app.presser(btn)
+
     Button:
-        text: '9'
-    
+        id: btn
+        text: ""
+        font_size: "45sp"
+        on_release: app.presser(btn)
+
+    Label:
+        id: score
+        font_size: "32sp"
+        text: "X first"
+        halign: "center"
+        pos_hint: {"center_y": .4}
+
+    Button:
+        id: restart
+        text: "Restart"
+        pos_hint: {"center_x": .5, "center_y": .15}
+        on_release: app.restart()
+        
+        

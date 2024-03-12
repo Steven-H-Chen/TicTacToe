@@ -9,10 +9,12 @@ class Layoutsx(GridLayout):
     pass
 
 
-
 class MyTicApp(App):
     def build(self):
         return Layoutsx()
+    
+    def presser(presser, btn):
+       pass
     
 if __name__ == '__main__':
     MyTicApp().run()
