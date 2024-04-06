@@ -64,12 +64,14 @@
         font_size: "32sp"
         text: "X first"
         halign: "center"
-        pos_hint: {"center_y": .4}
+        pos: (450, 200)
 
     Button:
         id: restart
         text: "Restart"
-        pos_hint: {"center_x": .5, "center_y": .15}
+        pos: (450, 100)
         on_release: app.restart()
+
+
         
         
