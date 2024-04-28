@@ -1,19 +1,18 @@
 from kivy.app import App
 from kivy.uix.floatlayout import FloatLayout
-from cbutton import Layoutsx
+from kivy.lang import Builder 
 
+Builder.load_file("layouts.kv")
 
-class MyTicApp(App):
+class Layoutsx(FloatLayout):
+    def sizing (self, **kwargs):
+        super(Layoutsx, self).sizing(**kwargs)
+    pass
+
+class MyButton(App):
     def build(self):
-        layout = FloatLayout()
-
-        glayout = Layoutsx()
-
-        layout.add_widget(glayout)
-
         return Layoutsx()
     
-
     counters = []
     turn = "X"
     def presser(self, btn):
@@ -50,6 +49,4 @@ class MyTicApp(App):
         self.root.ids.btn7.text = ""
         self.root.ids.btn8.text = ""
         self.root.ids.btn9.text = ""
-    
-if __name__ == '__main__':
-    MyTicApp().run()
+    pass
