@@ -1,10 +1,13 @@
 from kivy.app import App
 from kivy.uix.floatlayout import FloatLayout
-from cbutton import Layoutsx
-
+from kivy.lang import Builder
+from cbutton import Layoutsx, Myfunc
 
 class MyTicApp(App):
+    classob = Myfunc()
+
     def build(self):
+        # Load the .kv file
         layout = FloatLayout()
 
         glayout = Layoutsx()
@@ -12,44 +15,49 @@ class MyTicApp(App):
         layout.add_widget(glayout)
 
         return Layoutsx()
-    
 
-    counters = []
+    # Variables
     turn = "X"
+    rcds = []
+    itm = 2
+
     def presser(self, btn):
         if self.turn == 'X':
-            btn.text ="X"
+            btn.text = "X"
             btn.disabled = True
-            self.root.ids.score.text = "0's Turn"
-            self.turn ="O"
+            self.root.ids.score.text = "O's Turn"
+            self.turn = "O"
+            self.rcds.append((btn.custom_attr, btn.text))
+            if self.itm < len(self.rcds) - 1:
+                self.rcds[self.itm], self.rcds[self.itm + 1] = self.rcds[self.itm + 1], self.rcds[self.itm]
+            else:
+                pass
         else:
-            btn.text ="O"
-            btn.disabled = True 
+            btn.text = "O"
+            self.rcds.append((btn.custom_attr, btn.text))
+            btn.disabled = True
             self.root.ids.score.text = "X's Turn"
             self.turn = "X"
-        
+            if self.itm < len(self.rcds) - 1:
+                self.rcds[self.itm], self.rcds[self.itm + 1] = self.rcds[self.itm + 1], self.rcds[self.itm]
+            else:
+                pass
+
+    def sortwin(self, rcds):
+        for (custom_attr, text) in enumerate(rcds):
+            if custom_attr == 'u1' and text == 'X':
+                if custom_attr == 'u2' and text == 'X':
+                    if custom_attr =='u3' and text =='X':
+                        self.root.ids.winc.text = "X has won"
+            else:
+                self.root.ids.winc.text = "No one has yet to win"
+
     def restart(self):
-        self.turn = "X"
+        #self.turn = "X"
+        for i in range(1, 10):
+            button = self.root.ids[f"btn{i}"]
+            button.disabled = False
+            button.text = ""
 
-        self.root.ids.btn1.disabled = False
-        self.root.ids.btn2.disabled = False
-        self.root.ids.btn3.disabled = False
-        self.root.ids.btn4.disabled = False
-        self.root.ids.btn5.disabled = False
-        self.root.ids.btn6.disabled = False
-        self.root.ids.btn7.disabled = False
-        self.root.ids.btn8.disabled = False
-        self.root.ids.btn9.disabled = False
-
-        self.root.ids.btn1.text = ""
-        self.root.ids.btn2.text = ""
-        self.root.ids.btn3.text = ""
-        self.root.ids.btn4.text = ""
-        self.root.ids.btn5.text = ""
-        self.root.ids.btn6.text = ""
-        self.root.ids.btn7.text = ""
-        self.root.ids.btn8.text = ""
-        self.root.ids.btn9.text = ""
-    
 if __name__ == '__main__':
     MyTicApp().run()
