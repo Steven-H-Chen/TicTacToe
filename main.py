@@ -18,39 +18,41 @@ class MyTicApp(App):
 
     # Variables
     turn = "X"
-    rcds = []
-    itm = 2
+    rcds = [['' for _ in range(3)] for _ in range(3)]
+     
 
     def presser(self, btn):
         if self.turn == 'X':
             btn.text = "X"
+            self.rcds(btn.custom_attr, btn.text)
             btn.disabled = True
             self.root.ids.score.text = "O's Turn"
             self.turn = "O"
-            self.rcds.append((btn.custom_attr, btn.text))
-            if self.itm < len(self.rcds) - 1:
-                self.rcds[self.itm], self.rcds[self.itm + 1] = self.rcds[self.itm + 1], self.rcds[self.itm]
-            else:
-                pass
+            #self.rcds.append((btn.custom_attr, btn.text))
+            for i in range(3):
+                for p in range(3):
+                    self.rcds.append(i,p)
         else:
             btn.text = "O"
-            self.rcds.append((btn.custom_attr, btn.text))
+            self.rcds(btn.custom_attr, btn.text)
+            #self.rcds.append((btn.custom_attr, btn.text))
             btn.disabled = True
             self.root.ids.score.text = "X's Turn"
             self.turn = "X"
-            if self.itm < len(self.rcds) - 1:
-                self.rcds[self.itm], self.rcds[self.itm + 1] = self.rcds[self.itm + 1], self.rcds[self.itm]
-            else:
-                pass
+            for i in range(3):
+                for p in range(3):
+                    self.rcds.append(i,p)
+        
+        winner = self.check_winner()
+        if winner:
+            self.root.ids.score.text = "Game Over"
+            self.root.ids.testing.text = f"{winner} wins!"
+            # Disable all buttons after a win
+            for i in range(1, 10):
+                self.root.ids[f"btn{i}"].disabled = True
 
-    def sortwin(self, rcds):
-        for (custom_attr, text) in enumerate(rcds):
-            if custom_attr == 'u1' and text == 'X':
-                if custom_attr == 'u2' and text == 'X':
-                    if custom_attr =='u3' and text =='X':
-                        self.root.ids.winc.text = "X has won"
-            else:
-                self.root.ids.winc.text = "No one has yet to win"
+
+        
 
     def restart(self):
         #self.turn = "X"
