@@ -1,7 +1,6 @@
 from kivy.app import App
 from kivy.uix.floatlayout import FloatLayout
 from cbutton import Layoutsx, Myfunc
-from kivy.clock import Clock
 
 class MyTicApp(App):
     classob = Myfunc()
