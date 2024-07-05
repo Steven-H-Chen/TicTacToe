@@ -1,58 +1,49 @@
+from kivy.lang import Builder 
 from kivy.app import App
 from kivy.uix.floatlayout import FloatLayout
-from kivy.lang import Builder
-from cbutton import Layoutsx, Myfunc
+from kivy.clock import Clock
+
+Builder.load_file("layout2.kv")
+
+
+class Layoutsx(FloatLayout):
+    def do_while_action(self):
+        self.result_label.text = 'Action started...'
+        
+        # Simulate a do-while loop with Clock.schedule_interval
+        self.counter = 0
+        self.max_iterations = 5
+        
+        def do_while_callback(dt):
+            self.counter += 1
+            if self.counter <= self.max_iterations:
+                self.result_label.text = f'Action running... Iteration {self.counter}'
+            else:
+                self.result_label.text = 'Action finished'
+                # Stop the loop
+                Clock.unschedule(do_while_callback)
+        
+        # Start the loop immediately and repeat every second
+        Clock.schedule_interval(do_while_callback, 1.0)
+
 
 class MyTicApp(App):
-    classob = Myfunc()
-
     def build(self):
-        # Load the .kv file
-        layout = FloatLayout()
-
-        glayout = Layoutsx()
-
-        layout.add_widget(glayout)
-
         return Layoutsx()
-
-    # Variables
+    
+    counters = []
     turn = "X"
-    rcds = [['' for _ in range(3)] for _ in range(3)]
-     
-
     def presser(self, btn):
         if self.turn == 'X':
-            btn.text = "X"
-            self.rcds(btn.custom_attr, btn.text)
+            btn.text ="X"
             btn.disabled = True
-            self.root.ids.score.text = "O's Turn"
-            self.turn = "O"
-            #self.rcds.append((btn.custom_attr, btn.text))
-            for i in range(3):
-                for p in range(3):
-                    self.rcds.append(i,p)
+            self.root.ids.score.text = "0's Turn"
+            self.turn ="O"
         else:
-            btn.text = "O"
-            self.rcds(btn.custom_attr, btn.text)
-            #self.rcds.append((btn.custom_attr, btn.text))
-            btn.disabled = True
+            btn.text ="O"
+            btn.disabled = True 
             self.root.ids.score.text = "X's Turn"
             self.turn = "X"
-            for i in range(3):
-                for p in range(3):
-                    self.rcds.append(i,p)
-        
-        winner = self.check_winner()
-        if winner:
-            self.root.ids.score.text = "Game Over"
-            self.root.ids.testing.text = f"{winner} wins!"
-            # Disable all buttons after a win
-            for i in range(1, 10):
-                self.root.ids[f"btn{i}"].disabled = True
-
-
-        
 
     def restart(self):
         #self.turn = "X"
