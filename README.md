@@ -21,3 +21,20 @@ third to condense the code and allow the program to run on less code as possible
 
 In future revisits there may be more variants to maintain old versions of the program 
 
+Installation Process:
+The program setup is very simple since I downloaded Kivy from the installation guide give by their website in 
+the following link: https://kivy.org/doc/stable/gettingstarted/installation.html
+
+My program was built upon Windows OS so if you are running this program a windows VM may be needed to run the 
+program if you possess a Mac device. However, if you have a Windows OS device then you can run the Windows installation.
+
+The program also runs upon python 3.11.7, but that was the available compatible installation for me 
+and you are free to download any version to run this program. 
+This link where will take you there: https://www.python.org/downloads/ 
+
+Finally the IDE that I used to develop this program was Visual Studio Code which can be found here with this link:
+https://code.visualstudio.com/download 
+I only have the python packages downloaded since that was the only language I was coding this program with. 
+
+
+
