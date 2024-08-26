@@ -1,0 +1,43 @@
+<MyScreenManager>:
+    CustomScreen:
+    ScoreboardScreen:
+
+<CustomScreen>:
+    FloatLayout:
+        Label:
+            text: 'Custom Screen'
+            font_size: 32
+            size_hint: None, None
+            size: 400, 100
+            pos_hint: {'center_x': 0.5, 'center_y': 0.8}
+
+        Button:
+            text: 'Go to Scoreboard'
+            size_hint: None, None
+            size: 200, 50
+            pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+            on_release: root.manager.current = 'scoreboard'
+
+<ScoreboardScreen>:
+    GridLayout:
+        cols: 1
+        padding: 10
+        spacing: 10
+
+        Label:
+            text: 'Scoreboard'
+            font_size: 32
+            size_hint: None, None
+            size: 400, 100
+
+        Label:
+            text: 'Player 1: 10\nPlayer 2: 15'
+            font_size: 24
+            size_hint: None, None
+            size: 400, 200
+
+        Button:
+            text: 'Back to Home'
+            size_hint: None, None
+            size: 200, 50
+            on_release: root.manager.current = 'custom'

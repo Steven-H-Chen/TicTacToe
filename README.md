@@ -15,9 +15,9 @@ As of July 7th 2024 the program in its basic form is completed however possible 
 5) Randomizer to dictate who starts first
 
 There are 3 variants of this project
-first to create the game
-second to establish the usage of porting classes and dependency from elsewhere in
-third to condense the code and allow the program to run on less code as possible (a merger of the first two)
+first to establish the usage of porting classes and dependency from elsewhere in
+second to condense the code and allow the program to run on less code as possible 
+third to now implement the different screen transitions to have the welcome screen
 
 In future revisits there may be more variants to maintain old versions of the program 
 

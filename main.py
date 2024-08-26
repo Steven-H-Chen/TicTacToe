@@ -1,77 +1,50 @@
-from kivy.lang import Builder 
 from kivy.app import App
-from kivy.uix.floatlayout import FloatLayout
+from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.button import Button
 
-Builder.load_file("layout2.kv")
+# Define the MainScreen
+class MainScreen(Screen):
+    def __init__(self, **kwargs):
+        super(MainScreen, self).__init__(**kwargs)
+        layout = BoxLayout(orientation='vertical')
+        self.add_widget(layout)
 
-class Layoutsx(FloatLayout):
-    pass
+        # Add a button to switch to the scoreboard screen
+        switch_to_scoreboard_btn = Button(text="Go to Scoreboard")
+        switch_to_scoreboard_btn.bind(on_press=self.go_to_scoreboard)
+        layout.add_widget(switch_to_scoreboard_btn)
 
-class MyTicApp(App):
+    def go_to_scoreboard(self, instance):
+        self.manager.current = 'scoreboard'
+
+# Define the ScoreboardScreen
+class ScoreboardScreen(Screen):
+    def __init__(self, **kwargs):
+        super(ScoreboardScreen, self).__init__(**kwargs)
+        layout = BoxLayout(orientation='vertical')
+        self.add_widget(layout)
+
+        # Add a button to switch back to the main screen
+        switch_to_main_btn = Button(text="Back to Main Screen")
+        switch_to_main_btn.bind(on_press=self.go_to_main)
+        layout.add_widget(switch_to_main_btn)
+
+    def go_to_main(self, instance):
+        self.manager.current = 'main'
+
+# Define the ScreenManager
+class MyApp(App):
     def build(self):
-        return Layoutsx()
-    
-    num = 9
-    turn = "X"
-    def presser(self, btn):
-        if self.turn == 'X':
-            btn.text ="X"
-            btn.disabled = True
-            self.root.ids.score.text = "0's Turn"
-            self.turn ="O"
-            if self.num > 0: 
-                self.num -= 1
-                if self.root.ids.btn1.text == "X" and self.root.ids.btn2.text == "X" and self.root.ids.btn3.text == "X":
-                    self.root.ids.winc.text = "X has won"
-                elif self.root.ids.btn4.text == "X" and self.root.ids.btn5.text == "X" and self.root.ids.btn6.text == "X":
-                    self.root.ids.winc.text = "X has won"
-                elif self.root.ids.btn7.text == "X" and self.root.ids.btn8.text == "X" and self.root.ids.btn9.text == "X":
-                    self.root.ids.winc.text = "X has won"
-                elif self.root.ids.btn1.text == "X" and self.root.ids.btn4.text == "X" and self.root.ids.btn7.text == "X":
-                    self.root.ids.winc.text = "X has won"
-                elif self.root.ids.btn2.text == "X" and self.root.ids.btn5.text == "X" and self.root.ids.btn8.text == "X":
-                    self.root.ids.winc.text = "X has won"
-                elif self.root.ids.btn3.text == "X" and self.root.ids.btn6.text == "X" and self.root.ids.btn9.text == "X":
-                    self.root.ids.winc.text = "X has won"
-                else:
-                    pass
-            else:
-                pass
-        else:
-            btn.text ="O"
-            btn.disabled = True 
-            self.root.ids.score.text = "X's Turn"
-            self.turn = "X"
-            if self.num > 0: 
-                self.num -= 1
-                if self.root.ids.btn1.text == "O" and self.root.ids.btn2.text == "O" and self.root.ids.btn3.text == "O":
-                    self.root.ids.winc.text = "O has won"
-                elif self.root.ids.btn4.text == "O" and self.root.ids.btn5.text == "O" and self.root.ids.btn6.text == "O":
-                    self.root.ids.winc.text = "O has won"
-                elif self.root.ids.btn7.text == "O" and self.root.ids.btn8.text == "O" and self.root.ids.btn9.text == "O":
-                    self.root.ids.winc.text = "O has won"
-                elif self.root.ids.btn1.text == "O" and self.root.ids.btn4.text == "O" and self.root.ids.btn7.text == "O":
-                    self.root.ids.winc.text = "O has won"
-                elif self.root.ids.btn2.text == "O" and self.root.ids.btn5.text == "O" and self.root.ids.btn8.text == "O":
-                    self.root.ids.winc.text = "O has won"
-                elif self.root.ids.btn3.text == "O" and self.root.ids.btn6.text == "O" and self.root.ids.btn9.text == "O":
-                    self.root.ids.winc.text = "O has won"
-                else:
-                    pass
-            else:
-                pass
-    
-    def restart(self):
-        #self.turn = "X"
-        for i in range(1, 10):
-            button = self.root.ids[f"btn{i}"]
-            button.disabled = False
-            button.text = ""
-            self.root.ids.winc.text = "Who will win?"
-            self.turn = "X"
-            self.root.ids.score.text = "X First"
-            self.num = 9
+        sm = ScreenManager()
 
+        # Add the screens to the ScreenManager
+        sm.add_widget(MainScreen(name='main'))
+        sm.add_widget(ScoreboardScreen(name='scoreboard'))
+
+        return sm
 
 if __name__ == '__main__':
-    MyTicApp().run()
+    MyApp().run()
+
+
