@@ -1,7 +1,7 @@
 from kivy.lang import Builder 
 from kivy.app import App
 from kivy.uix.floatlayout import FloatLayout
-from kivy.uix.screenmanager import ScreenManager, Screen
+
 
 Builder.load_file("layout2.kv")
 

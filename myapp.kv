@@ -1,43 +1,136 @@
-<MyScreenManager>:
-    CustomScreen:
-    ScoreboardScreen:
-
-<CustomScreen>:
+# Define the MainScreen layout
+<MainScreen>:
     FloatLayout:
+        Button:
+            text: "Go to Game"
+            size_hint: 0.3, 0.1
+            pos_hint: {"x": 0.35, "y": 0.6}
+            on_press: root.manager.current = 'game'
+        Button:
+            text: "Go to Score"
+            size_hint: 0.3, 0.1
+            pos_hint: {"x": 0.35, "y": 0.4}
+            on_press: root.manager.current = 'score'
+
+# Define the ScoreboardScreen layout
+<GameScreen>:
+    FloatLayout:
+        Button:
+            text: "Back to Main Screen"
+            size_hint: 0.3, 0.1
+            pos_hint: {"x": 0.1, "y": 0}
+            on_press: root.manager.current = 'main'
+        Button:
+            text: "Go to Score"
+            size_hint: 0.3, 0.1
+            pos_hint: {"x": 0.6, "y": 0}
+            on_press: root.manager.current = 'score'
         Label:
-            text: 'Custom Screen'
-            font_size: 32
-            size_hint: None, None
-            size: 400, 100
-            pos_hint: {'center_x': 0.5, 'center_y': 0.8}
+            id: score
+            font_size: "32sp"
+            text: "X first"
+            halign: "center"
+            pos_hint: {"center_y":.35}
+        
+        Label:
+            id: winc
+            font_size: "32sp"
+            text: "Who will win?"
+            halign: "center"
+            pos_hint: {"center_y":.3}
 
         Button:
-            text: 'Go to Scoreboard'
+            id: restart
+            text: "Restart"
+            pos_hint: {'center_x':.5, 'center_y': .15}
             size_hint: None, None
-            size: 200, 50
-            pos_hint: {'center_x': 0.5, 'center_y': 0.6}
-            on_release: root.manager.current = 'scoreboard'
+            on_release: app.restart()
 
-<ScoreboardScreen>:
-    GridLayout:
-        cols: 1
-        padding: 10
-        spacing: 10
+            GridLayout:
+            size_hint: (.5,.5)
+            pos_hint: {"center_x": .5, "center_y": .7}
+            rows:3
+            cols:3
+            
+            Button:
+                id: btn1
+                text: ""
+                #color: 0, 0, 0, 1
+                custom_attr: 'u1'
+                font_size: "45sp"
+                on_release: app.presser(btn1)
+                
+                #background_normal: 'pb.png'
+                #background_down: 'bb.png'
+                                        
+            Button:
+                id: btn2
+                text: ""
+                custom_attr: 'u2'
+                font_size: "45sp"
+                on_release: app.presser(btn2)
 
-        Label:
-            text: 'Scoreboard'
-            font_size: 32
-            size_hint: None, None
-            size: 400, 100
+            Button:
+                id: btn3
+                text: ""
+                custom_attr: 'u3'
+                font_size: "45sp"
+                on_release: app.presser(btn3)
 
-        Label:
-            text: 'Player 1: 10\nPlayer 2: 15'
-            font_size: 24
-            size_hint: None, None
-            size: 400, 200
+            Button:
+                id: btn4
+                text: ""
+                custom_attr: 'u4'
+                font_size: "45sp"
+                on_release: app.presser(btn4)
 
+            Button:
+                id: btn5
+                text: ""
+                custom_attr: 'u5'
+                font_size: "45sp"
+                on_release: app.presser(btn5)
+
+            Button:
+                id: btn6
+                text: ""
+                custom_attr: 'u6'
+                font_size: "45sp"
+                on_release: app.presser(btn6)
+
+            Button:
+                id: btn7
+                text: ""
+                custom_attr: 'u7'
+                font_size: "45sp"
+                on_release: app.presser(btn7)
+
+            Button:
+                id: btn8
+                text: ""
+                custom_attr: 'u8'
+                font_size: "45sp"
+                on_release: app.presser(btn8)
+
+            Button:
+                id: btn9
+                text: ""
+                custom_attr: 'u9'
+                font_size: "45sp"
+                on_release: app.presser(btn9)
+
+# Define the SettingsScreen layout
+<ScoreScreen>:
+    FloatLayout:
         Button:
-            text: 'Back to Home'
-            size_hint: None, None
-            size: 200, 50
-            on_release: root.manager.current = 'custom'
+            text: "Back to Main Screen"
+            size_hint: 0.3, 0.1
+            pos_hint: {"x": 0.35, "y": 0.6}
+            on_press: root.manager.current = 'main'
+        Button:
+            text: "Go to Game"
+            size_hint: 0.3, 0.1
+            pos_hint: {"x": 0.35, "y": 0.4}
+            on_press: root.manager.current = 'game'
+
+
