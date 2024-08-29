@@ -1,10 +1,10 @@
 <Layoutsx>:
-    #Image:
-    #    source: 'bwb.png'
-    #    allow_stretch: True
-    #    keep_ratio: False
-    #    size_hint: 1, 1
-    #    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+    Image:
+        source: 'photos/bwb.png'
+        allow_stretch: True
+        keep_ratio: False
+        size_hint: 1, 1
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
     FloatLayout:    
     
         GridLayout:
@@ -22,8 +22,8 @@
                 font_size: "45sp"
                 on_release: app.presser(btn1)
                 
-                #background_normal: 'pb.png'
-                #background_down: 'bb.png'
+                background_normal: 'photos/pb.png'
+                background_down: 'photos/bb.png'
                                         
             Button:
                 id: btn2

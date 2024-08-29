@@ -1,15 +1,21 @@
 # Define the MainScreen layout
 <MainScreen>:
     FloatLayout:
+        Image:
+            source: 'photos/gojo.png'
+            allow_stretch: False
+            keep_ratio: False
+            size_hint: 0.6, 0.55
+            pos_hint: {'center_x': 0.5, 'center_y': 0.7}
         Button:
             text: "Go to Game"
-            size_hint: 0.3, 0.1
-            pos_hint: {"x": 0.35, "y": 0.6}
+            size_hint: 0.2, 0.1
+            pos_hint: {"x": 0.3, "y": 0.3}
             on_press: root.manager.current = 'game'
         Button:
             text: "Go to Score"
-            size_hint: 0.3, 0.1
-            pos_hint: {"x": 0.35, "y": 0.4}
+            size_hint: 0.2, 0.1
+            pos_hint: {"x": 0.5, "y": 0.3}
             on_press: root.manager.current = 'score'
 
 # Define the ScoreboardScreen layout
@@ -17,13 +23,13 @@
     FloatLayout:
         Button:
             text: "Back to Main Screen"
-            size_hint: 0.3, 0.1
-            pos_hint: {"x": 0.1, "y": 0}
+            size_hint: 0.2, 0.1
+            pos_hint: {'center_x':.3, 'center_y': .15}
             on_press: root.manager.current = 'main'
         Button:
             text: "Go to Score"
-            size_hint: 0.3, 0.1
-            pos_hint: {"x": 0.6, "y": 0}
+            size_hint: 0.2, 0.1
+            pos_hint: {'center_x':.7, 'center_y': .15}
             on_press: root.manager.current = 'score'
         Label:
             id: score
@@ -43,10 +49,10 @@
             id: restart
             text: "Restart"
             pos_hint: {'center_x':.5, 'center_y': .15}
-            size_hint: None, None
-            on_release: app.restart()
+            size_hint: 0.2, 0.1
+            on_release: root.restart()
 
-            GridLayout:
+        GridLayout:
             size_hint: (.5,.5)
             pos_hint: {"center_x": .5, "center_y": .7}
             rows:3
@@ -58,7 +64,7 @@
                 #color: 0, 0, 0, 1
                 custom_attr: 'u1'
                 font_size: "45sp"
-                on_release: app.presser(btn1)
+                on_release: root.presser(btn1)
                 
                 #background_normal: 'pb.png'
                 #background_down: 'bb.png'
@@ -68,69 +74,125 @@
                 text: ""
                 custom_attr: 'u2'
                 font_size: "45sp"
-                on_release: app.presser(btn2)
+                on_release: root.presser(btn2)
 
             Button:
                 id: btn3
                 text: ""
                 custom_attr: 'u3'
                 font_size: "45sp"
-                on_release: app.presser(btn3)
+                on_release: root.presser(btn3)
 
             Button:
                 id: btn4
                 text: ""
                 custom_attr: 'u4'
                 font_size: "45sp"
-                on_release: app.presser(btn4)
+                on_release: root.presser(btn4)
 
             Button:
                 id: btn5
                 text: ""
                 custom_attr: 'u5'
                 font_size: "45sp"
-                on_release: app.presser(btn5)
+                on_release: root.presser(btn5)
 
             Button:
                 id: btn6
                 text: ""
                 custom_attr: 'u6'
                 font_size: "45sp"
-                on_release: app.presser(btn6)
+                on_release: root.presser(btn6)
 
             Button:
                 id: btn7
                 text: ""
                 custom_attr: 'u7'
                 font_size: "45sp"
-                on_release: app.presser(btn7)
+                on_release: root.presser(btn7)
 
             Button:
                 id: btn8
                 text: ""
                 custom_attr: 'u8'
                 font_size: "45sp"
-                on_release: app.presser(btn8)
+                on_release: root.presser(btn8)
 
             Button:
                 id: btn9
                 text: ""
                 custom_attr: 'u9'
                 font_size: "45sp"
-                on_release: app.presser(btn9)
+                on_release: root.presser(btn9)
 
 # Define the SettingsScreen layout
 <ScoreScreen>:
     FloatLayout:
+        Image:
+            source: 'photos/bwb.jpg'
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: 1, 1
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
         Button:
             text: "Back to Main Screen"
-            size_hint: 0.3, 0.1
-            pos_hint: {"x": 0.35, "y": 0.6}
+            size_hint: 0.2, 0.1
+            pos_hint: {'center_x':.6, 'center_y': .15}
             on_press: root.manager.current = 'main'
         Button:
             text: "Go to Game"
-            size_hint: 0.3, 0.1
-            pos_hint: {"x": 0.35, "y": 0.4}
+            size_hint: 0.2, 0.1
+            pos_hint: {'center_x':.4, 'center_y': .15}
             on_press: root.manager.current = 'game'
+        GridLayout:
+            size_hint: (.5,.5)
+            pos_hint: {"center_x": .5, "center_y": .6}
+            rows:2
+            cols:2
+
+            Label:
+                id: oopx
+                font_size: "32sp"
+                text: "Opponent X"
+                halign: "center"
+                pos_hint: {"center_y":.3}
+                color: 0,0,0,1 
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1
+
+            Label:
+                id: oopy
+                font_size: "32sp"
+                text: "Opponent Y"
+                halign: "center"
+                pos_hint: {"center_y":.3}
+                color: 0,0,0,1 
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1
+
+            Label:
+                id: c1
+                font_size: "32sp"
+                text: "hold"
+                halign: "center"
+                pos_hint: {"center_y":.3}
+                color: 0,0,0,1 
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1
+
+            Label:
+                id: c2
+                font_size: "32sp"
+                text: "hold"
+                halign: "center"
+                pos_hint: {"center_y":.3}
+                color: 0,0,0,1 
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1
+
 
 
