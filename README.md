@@ -7,12 +7,24 @@ This tictactoe program is completed however it can be improved upon the win cond
 adding the button id into an array list then utlizing that to compare, using a 3 by 3 tuple array to register the location of the grid upon the program. 
 These methods are made to store the onclick events and indicate to the program when to declare a winner.
 
+Personal discovery. If you are accessing a button and it has functions calling its ID within
+the main program then running by self.root.ids in main and app.(inser function name) in the .kv file
+If its by external class outside of main then you do self.ids... in the class and root.(insert function name)
+
+
 As of July 7th 2024 the program in its basic form is completed however possible future improvements include:
 1) Allowing this program to be deployable upon download
 2) Creating a score board at the top right corner
 3) Creating a welcome screen to start
 4) Allowing user to switch based on who has won upon the last turn
 5) Randomizer to dictate who starts first
+
+As of August 28th 2024 next step implemented 
+Scoreboard created however lacks the functionality to begin recording
+Main screen created as a welcome screen
+Beginning the implementation of packaging 
+Qol such as alternating users, randomizer, score board counter implemented after packaging is established
+New Screenshots and steps must be revised. 
 
 
 Installation Process:
